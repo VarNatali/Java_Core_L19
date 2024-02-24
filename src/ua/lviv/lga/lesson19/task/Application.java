@@ -3,19 +3,20 @@ package ua.lviv.lga.lesson19.task;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import static ua.lviv.lga.lesson19.task.Methods.*;
 
 public class Application {
     public static void main(String[] args) throws Exception {
         Employee employee = new Employee("Petro1", 111111, 1111.11);
 
         Employee employee2;
-        Methods met = null;
+       
 
         File file1 = new File("emploeeinfo.txt");
 
-        met.serialize(file1, employee);
+        serialize(file1, employee);
         System.out.println("Info befor write to emploeeinfo.txt \n " + employee);
-        employee2 = (Employee) met.deserialize(file1);
+        employee2 = (Employee) deserialize(file1);
         System.out.println("Info after read from emploeeinfo.txt \n " + employee2);
 
 
@@ -30,9 +31,9 @@ public class Application {
 
         System.out.println("List befor write to emploelist.txt \n " + emplList);
 
-        met.serialize(file2, (Serializable) emplList);
+        serialize(file2, (Serializable) emplList);
 
-        emplList2 = (List<Employee>) met.deserialize(file2);
+        emplList2 = (List<Employee>) deserialize(file2);
 
         System.out.println("List after read from emploelist.txt \n " + emplList2);
     }
